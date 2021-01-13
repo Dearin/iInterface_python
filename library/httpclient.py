@@ -5,10 +5,14 @@ import urllib3
 class HttpClient:
     """Generic Http Client class"""
 
-    def __init__(self, disable_ssl_verify=True, timeout=60):
+    def __init__(self, disable_ssl_verify=False, timeout=60):
         """Initialize method"""
+        # 处理一下ProxyError
+        session = requests.Session()
+        session.trust_env = False
+        # self.client = requests.session()
 
-        self.client = requests.session()
+        self.client = session
         self.disable_ssl_verify = disable_ssl_verify
         self.timeout = timeout
         if self.disable_ssl_verify:
