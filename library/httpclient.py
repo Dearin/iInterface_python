@@ -5,7 +5,7 @@ import urllib3
 class HttpClient:
     """Generic Http Client class"""
 
-    def __init__(self, disable_ssl_verify=False, timeout=60):
+    def __init__(self, disable_ssl_verify=True, timeout=60):
         """Initialize method"""
 
         self.client = requests.session()
